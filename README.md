@@ -5,7 +5,7 @@
 PDF Viewer lets you read PDF documents without downloading them. Simply upload a PDF, run the `/preview` command, and browse pages in Discord's fullscreen image viewer using your keyboard's arrow keys.
 
 <p align="center">
-  <img src="pdf-viewer-demo.gif" alt="PDF Viewer Demo">
+  <img src="https://raw.githubusercontent.com/Dipson-bot/discord-pdf-viewer-bot/main/pdf-viewer-demo.gif" width="900" alt="PDF Viewer Demo">
 </p>
 
 <p align="center">
