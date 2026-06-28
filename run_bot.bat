@@ -1,10 +1,10 @@
 @echo off
-title Discord PDF Viewer Bot
+title PDF Viewer Bot
 
-echo ======================================
-echo Discord PDF Viewer Bot
-echo Created by Dipson
-echo ======================================
+echo ==========================================
+echo        PDF Viewer Bot
+echo         Created by Dipson
+echo ==========================================
 echo.
 
 echo Waiting for internet connection...
@@ -16,17 +16,8 @@ if errorlevel 1 (
     goto internet
 )
 
-echo Internet detected.
-echo.
-
-:restart
 cd /d "%~dp0"
 
-echo Starting PDF Viewer Bot...
-python bot.py
+start "" pythonw.exe bot.py
 
-echo.
-echo Bot stopped or crashed.
-echo Restarting in 30 seconds...
-timeout /t 30 /nobreak >nul
-goto restart
+exit

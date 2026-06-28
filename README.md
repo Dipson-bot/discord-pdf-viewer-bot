@@ -24,6 +24,7 @@ PDF Viewer lets you read PDF documents without downloading them. Simply upload a
 - 🔒 Ephemeral previews (only visible to the user)
 - 🌍 Supports multiple Discord servers
 - 🚀 Optional automatic startup with Windows
+- 💻 One-click Windows startup installer included
 - 📚 No need to download PDFs before reading
 
 ---
@@ -206,54 +207,41 @@ PDF Viewer Bot online
 
 # 🚀 Start Automatically with Windows (Optional)
 
-If you'd like the bot to start automatically whenever you log into Windows:
+The easiest way to keep the bot running automatically after every Windows login is to use the included installer.
 
-## Step 1 — Open the Startup folder
+Simply double-click:
 
-Press **Win + R**
-
-Type:
-
-```text
-shell:startup
+```
+install_startup.bat
 ```
 
-Press **Enter**.
+The installer will automatically create a Windows Scheduled Task that:
 
----
+- ✅ Starts the bot whenever you log into Windows
+- ✅ Runs the bot in the background (no Command Prompt window)
+- ✅ Waits for an internet connection before launching
+- ✅ Uses the correct project folder automatically
 
-## Step 2 — Create a Shortcut
+> **No manual Task Scheduler configuration is required.**
 
-**Do NOT copy `run_bot.bat` into the Startup folder.**
+If you ever want to disable automatic startup, simply run:
 
-Instead:
+```
+uninstall_startup.bat
+```
 
-1. Open the project folder.
-2. Right-click **run_bot.bat**.
-3. Click **Create shortcut**.
-4. Move the **shortcut** into the Startup folder.
+> **Note:** The Discord desktop application does **not** need to be running. The bot connects directly to Discord using your bot token.
 
-### Why use a shortcut?
-
-The included `run_bot.bat` is portable and automatically finds the project folder using `%~dp0`.
-
-If you copy the batch file into the Startup folder instead of creating a shortcut, Windows will try to find `bot.py` inside the Startup folder and the bot will fail to start.
-
-Using a shortcut allows the batch file to remain in the project folder while still launching automatically.
-
----
-
-## Step 3 — Restart Windows
-
-After logging in, the script will:
-
-- Wait until an internet connection is available.
-- Launch the bot automatically.
-- Restart the bot if it unexpectedly stops.
-
-> **Note:** You do **not** need to open the Discord desktop application. The bot connects directly to Discord's servers.
-
----
+> **Note:** You can keep the bot folder anywhere on your computer (Desktop, Documents, Downloads, another drive, etc.). The installer automatically detects its location.
+>
+> If you move the bot folder after running `install_startup.bat`, simply run:
+>
+> ```
+> uninstall_startup.bat
+> install_startup.bat
+> ```
+>
+> again to update the startup task to the new location.
 
 # 📖 Using the Bot
 
