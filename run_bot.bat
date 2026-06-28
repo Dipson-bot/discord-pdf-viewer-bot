@@ -11,7 +11,8 @@ if errorlevel 1 (
 
 :restart
 echo Starting PDF Viewer Bot...
-cd /d D:\Downloads\pdf_viewer_bot
+
+cd /d "%~dp0"
 
 python bot.py
 
