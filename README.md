@@ -16,14 +16,24 @@ PDF Viewer lets you read PDF documents without downloading them. Simply upload a
 
 ## ✨ Features
 
-* 📄 Preview PDF files directly inside Discord
-* 🔍 Search uploaded PDFs by filename
-* 🖼️ Native Discord fullscreen image gallery
-* ⌨️ Navigate pages using the **←** and **→** arrow keys
-* ⚡ Fast multi-threaded rendering
-* 🔒 Ephemeral previews (only visible to the user)
-* 🌍 Supports multiple Discord servers
-* 📚 No need to download the PDF before reading
+- 📄 Preview PDF files directly inside Discord
+- 🔍 Search uploaded PDFs by filename
+- 🖼️ Uses Discord's native fullscreen image gallery
+- ⌨️ Navigate pages using the **←** and **→** arrow keys
+- ⚡ Fast multi-threaded PDF rendering
+- 🔒 Ephemeral previews (only visible to the user)
+- 🌍 Supports multiple Discord servers
+- 🚀 Optional automatic startup with Windows
+- 📚 No need to download PDFs before reading
+
+---
+
+## 📋 Requirements
+
+- Python 3.10 or newer
+- Windows 10/11 (tested)
+- A Discord Bot Token
+- Internet connection
 
 ---
 
@@ -49,7 +59,7 @@ If you're new to Discord bot development, continue with the detailed installatio
 
 ## 1. Install Python
 
-Download and install Python from:
+Download Python from:
 
 https://www.python.org/downloads/
 
@@ -99,7 +109,7 @@ https://discord.com/developers/applications
 
 6. Click **Reset Token** (or **Copy Token** if it's a brand new bot).
 
-⚠️ Never share your bot token.
+⚠️ **Never share your bot token with anyone.**
 
 ---
 
@@ -149,7 +159,7 @@ Go to:
 
 Enable:
 
-* ✅ Message Content Intent
+- ✅ Message Content Intent
 
 Save the changes.
 
@@ -177,7 +187,7 @@ Click **Authorize**.
 
 ---
 
-# ▶ Start the Bot
+# ▶️ Start the Bot
 
 Run:
 
@@ -194,9 +204,60 @@ PDF Viewer Bot online
 
 ---
 
+# 🚀 Start Automatically with Windows (Optional)
+
+If you'd like the bot to start automatically whenever you log into Windows:
+
+## Step 1 — Open the Startup folder
+
+Press **Win + R**
+
+Type:
+
+```text
+shell:startup
+```
+
+Press **Enter**.
+
+---
+
+## Step 2 — Create a Shortcut
+
+**Do NOT copy `run_bot.bat` into the Startup folder.**
+
+Instead:
+
+1. Open the project folder.
+2. Right-click **run_bot.bat**.
+3. Click **Create shortcut**.
+4. Move the **shortcut** into the Startup folder.
+
+### Why use a shortcut?
+
+The included `run_bot.bat` is portable and automatically finds the project folder using `%~dp0`.
+
+If you copy the batch file into the Startup folder instead of creating a shortcut, Windows will try to find `bot.py` inside the Startup folder and the bot will fail to start.
+
+Using a shortcut allows the batch file to remain in the project folder while still launching automatically.
+
+---
+
+## Step 3 — Restart Windows
+
+After logging in, the script will:
+
+- Wait until an internet connection is available.
+- Launch the bot automatically.
+- Restart the bot if it unexpectedly stops.
+
+> **Note:** You do **not** need to open the Discord desktop application. The bot connects directly to Discord's servers.
+
+---
+
 # 📖 Using the Bot
 
-1. Upload a PDF into a Discord channel.
+1. Upload a PDF to a Discord channel.
 
 2. Type:
 
@@ -210,27 +271,27 @@ PDF Viewer Bot online
 
 5. Click any page.
 
-6. Use Discord's fullscreen viewer.
+6. Open Discord's fullscreen viewer.
 
-7. Press **←** or **→** to move between pages.
+7. Use the **←** and **→** arrow keys to navigate between pages.
 
 ---
 
 # ⚙️ Configuration
 
-You can edit these values inside `config.py`.
+You can customize the bot by editing `config.py`.
 
-| Setting          | Description                           |
-| ---------------- | ------------------------------------- |
-| DPI              | Rendering quality                     |
-| MAX_FILE_MB      | Maximum PDF size                      |
-| ALLOWED_CHANNELS | Restrict the bot to specific channels |
+| Setting | Description |
+|---------|-------------|
+| DPI | PDF rendering quality |
+| MAX_FILE_MB | Maximum allowed PDF size |
+| ALLOWED_CHANNELS | Restrict the bot to specific channel IDs |
 
 ---
 
 # ❓ Frequently Asked Questions
 
-### The `/preview` command doesn't appear.
+### `/preview` doesn't appear.
 
 Global slash commands may take several minutes (sometimes up to one hour) to appear.
 
@@ -238,7 +299,7 @@ Restart the bot if necessary.
 
 ---
 
-### The bot says "DISCORD_TOKEN environment variable is not set."
+### "DISCORD_TOKEN environment variable is not set."
 
 Make sure you created:
 
@@ -272,22 +333,47 @@ inside `config.py`.
 
 ---
 
+### Do I need to keep Discord open?
+
+**No.**
+
+The bot connects directly to Discord using your bot token.
+
+As long as your computer is running, connected to the internet, and `python bot.py` is running, the bot will stay online.
+
+---
+
+# ⚠️ Known Limitations
+
+The bot is designed to be lightweight and easy to use. A few limitations currently exist:
+
+- 📂 The bot only searches for PDF files uploaded in the **current Discord channel**.
+- ⏳ Global slash commands may take several minutes (sometimes up to **one hour**) to appear after inviting the bot to a server.
+- 📄 Large PDFs may take longer to render depending on the number of pages, rendering DPI, and your computer's performance.
+- 📦 The maximum PDF size is controlled by `MAX_FILE_MB` in `config.py` (default: **50 MB**).
+- 🖼️ Discord only allows **10 attachments per message**, so PDFs with more than 10 pages are automatically split into multiple ephemeral messages.
+- 🪟 Automatic startup on Windows is supported using `run_bot.bat`, but **you must place a shortcut to the batch file in the Startup folder, not a copy of the file itself.**
+- 🌐 The bot must be running on a computer with an active internet connection. Closing the Python process or shutting down the computer will take the bot offline.
+- 🔒 Only users with permission to use slash commands in a server can access the bot's commands.
+
+---
+
 # 🛣️ Roadmap
 
-* [ ] Jump directly to a page
-* [ ] Zoom controls
-* [ ] Docker support
-* [ ] Password-protected PDFs
-* [ ] Public hosted version
-* [ ] Multiple rendering presets
+- [ ] Jump directly to a page
+- [ ] Zoom controls
+- [ ] Docker support
+- [ ] Password-protected PDFs
+- [ ] Public hosted version
+- [ ] Multiple rendering presets
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome.
+Contributions, bug reports, and feature requests are always welcome.
 
-Feel free to open an issue, suggest new features, or submit a pull request.
+Feel free to open an Issue or submit a Pull Request.
 
 ---
 
@@ -299,8 +385,8 @@ This project is licensed under the MIT License.
 
 <p align="center">
 
-⭐ If this project helped you, consider giving it a star!
+⭐ **If this project helped you, consider giving it a star!**
 
-Made with ❤️ by **Dipson**
+Made by **Dipson**
 
 </p>
